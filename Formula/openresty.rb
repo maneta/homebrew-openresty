@@ -1,6 +1,6 @@
 require 'formula'
 
-class NgxOpenresty < Formula
+class Openresty < Formula
   homepage 'http://openresty.org/'
 
   url 'http://openresty.org/download/ngx_openresty-1.5.11.1.tar.gz'
