@@ -21,14 +21,21 @@ Tap for Homebrew that adds a formula for [OpenResty](http://openresty.org/).
 
 ## Optional Arguments
 
-You might want to use LuaJIT for better performance and maybe also enable
-support Postgres:
+To enable PostgreSQL support:
 
-    $ brew install ngx_openresty --with-postgres
+    $ brew install ngx_openresty --with-postgresql
 
 For a list of all options available, have a look at:
 
     $ brew info ngx_openresty
+
+To run your OpenResty instance:
+
+    $ sudo openresty
+
+To stop your OpenResty instance:
+
+    $ sudo openresty -s stop
 
 ## Contributing
 

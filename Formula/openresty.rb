@@ -3,11 +3,19 @@ require 'formula'
 class Openresty < Formula
   homepage 'http://openresty.org/'
 
-  url 'http://openresty.org/download/ngx_openresty-1.5.11.1.tar.gz'
-  sha1 '98c8a9353897a534eef339ff3bd622025d1abbe3'
+  stable do
+    url 'http://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz'
+    sha1 '0cc7a3fe75fbe50dec619af1a09b87f7f8c79e1d'
+  end
+
+  devel do
+    url 'http://openresty.org/download/ngx_openresty-1.7.4.1rc2.tar.gz'
+    sha1 'ac87a3c40e1b459a9564ddd116cf6defb8cd25aa'
+  end
 
   depends_on 'pcre'
   depends_on 'postgresql' => :optional
+  depends_on 'geoip' => :optional
 
   # openresty options
   option 'without-luajit', "Compile *without* support for the Lua Just-In-Time Compiler"
@@ -19,6 +27,8 @@ class Openresty < Formula
   # nginx options
   option 'with-webdav', "Compile with ngx_http_dav_module"
   option 'without-gunzip', "Compile without ngx_http_gunzip_module"
+  option 'with-geoip', "Compile with ngx_http_geoip_module"
+  option 'with-stub_status', "Compile with ngx_http_stub_status_module"
 
   skip_clean 'logs'
 
@@ -35,6 +45,8 @@ class Openresty < Formula
 
     args << "--with-http_dav_module" if build.with? 'webdav'
     args << "--with-http_gunzip_module" unless build.without? 'gunzip'
+    args << "--with-http_geoip_module" if build.with? 'geoip'
+    args << "--with-http_stub_status_module" if build.with? 'stub_status'
 
     # Debugging mode, unfortunately without debugging symbols
     if build.with? 'debug'
@@ -42,13 +54,18 @@ class Openresty < Formula
       args << '--with-dtrace-probes'
       args << '--with-no-pool-patch'
 
+      # this allows setting of `debug.sethook` in luajit
+      unless build.without? 'luajit'
+        args << '--with-luajit-xcflags=-DLUAJIT_ENABLE_CHECKHOOK'
+      end
+
       opoo "Openresty will be built --with-debug option, but without debugging symbols. For debugging symbols you have to compile it by hand."
     end
 
     # OpenResty options
     args << "--with-lua51" if build.without? 'luajit'
 
-    args << "--with-http_postgres_module" if build.with? 'postgres'
+    args << "--with-http_postgres_module" if build.with? 'postgresql'
     args << "--with-http_iconv_module" if build.with? 'iconv'
 
     system "./configure", *args
