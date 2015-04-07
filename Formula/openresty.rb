@@ -8,11 +8,6 @@ class Openresty < Formula
     sha1 '0cc7a3fe75fbe50dec619af1a09b87f7f8c79e1d'
   end
 
-  devel do
-    url 'http://openresty.org/download/ngx_openresty-1.7.4.1rc2.tar.gz'
-    sha1 'ac87a3c40e1b459a9564ddd116cf6defb8cd25aa'
-  end
-
   depends_on 'pcre'
   depends_on 'postgresql' => :optional
   depends_on 'geoip' => :optional
