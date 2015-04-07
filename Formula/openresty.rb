@@ -18,7 +18,7 @@ class Openresty < Formula
 
   # nginx options
   option 'with-webdav', "Compile with ngx_http_dav_module"
-  option 'with-gunzip', "Compile with ngx_http_gunzip_module"
+  option 'without-gunzip', "Compile without ngx_http_gunzip_module"
 
   skip_clean 'logs'
 
@@ -34,7 +34,7 @@ class Openresty < Formula
     ]
 
     args << "--with-http_dav_module" if build.with? 'webdav'
-    args << "--with-http_gunzip_module" if build.with? 'gunzip'
+    args << "--with-http_gunzip_module" unless build.without? 'gunzip'
 
     # Debugging mode, unfortunately without debugging symbols
     if build.with? 'debug'
