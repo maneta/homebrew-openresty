@@ -27,7 +27,7 @@ class Openresty < Formula
       "--with-http_ssl_module",
       "--with-pcre",
       "--with-pcre-jit",
-      "--sbin-path=#{bin}/openresty",
+      "--sbin-path=#{bin}/nginx",
       "--conf-path=#{etc}/openresty/nginx.conf",
       "--pid-path=#{var}/run/openresty.pid",
       "--lock-path=#{var}/openresty/nginx.lock"
