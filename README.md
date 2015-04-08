@@ -16,26 +16,26 @@ Tap for Homebrew that adds a formula for [OpenResty](http://openresty.org/).
 
 ## Install
 
-    $ brew tap killercup/homebrew-openresty
-    $ brew install ngx_openresty
+    $ brew tap apitools/homebrew-openresty
+    $ brew install openresty
 
 ## Optional Arguments
 
-To enable PostgreSQL support:
+To enable debugging:
 
-    $ brew install ngx_openresty --with-postgresql
+    $ brew install openresty --with-debug
 
 For a list of all options available, have a look at:
 
-    $ brew info ngx_openresty
+    $ brew info openresty
 
 To run your OpenResty instance:
 
-    $ sudo openresty
+    $ sudo nginx
 
 To stop your OpenResty instance:
 
-    $ sudo openresty -s stop
+    $ sudo nginx -s stop
 
 ## Contributing
 
