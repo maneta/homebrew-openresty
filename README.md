@@ -19,6 +19,11 @@ Tap for Homebrew that adds a formula for [OpenResty](http://openresty.org/).
     $ brew tap apitools/homebrew-openresty
     $ brew install openresty
 
+This tap installs a luarocks version which is compatible with openresty:
+
+    $ brew install luarocks
+
+
 ## Optional Arguments
 
 To enable debugging:
