@@ -2,11 +2,11 @@ require 'formula'
 
 class Luarocks < Formula
 
-  homepage 'https://rocks.moonscript.org/'
+  homepage 'https://luarocks.org'
 
   stable do
-    url 'https://github.com/keplerproject/luarocks/archive/v2.3.0.tar.gz'
-    sha256 '92c014889ec6a09c4bb492df6b7f7be784110d6abe031e16418342781ca5c5ce'
+    url 'https://github.com/keplerproject/luarocks/archive/v2.4.2.tar.gz'
+    sha256 'f6c81ce3d0e5c6fe95df664a9173b516cc2b6916254128e76a8f37b5392ae081'
   end
 
   depends_on "homebrew/nginx/openresty"
