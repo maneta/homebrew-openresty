@@ -9,10 +9,10 @@ class Luarocks < Formula
     sha256 'eef88c2429c715a7beb921e4b1ba571dddb7c74a250fbb0d3cc0d4be7a5865d9'
   end
 
-  depends_on "homebrew/nginx/openresty"
+  depends_on "openresty/brew/openresty"
 
   def install
-    openresty_folder                 = Formula["homebrew/nginx/openresty"].opt_prefix
+    openresty_folder                 = Formula["openresty/brew/openresty"].opt_prefix
     openresty_luajit_folder          = File.join(openresty_folder, 'luajit')
     openresty_luajit_include_folder  = File.join(openresty_luajit_folder, 'include', 'luajit-2.1')
 
